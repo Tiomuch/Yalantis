@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function UserList () {
     const [users, setUsers] = useState([]) // eslint-disable-next-line
     const [EN, setEN] = useState(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+    const [col, setCol] = useState("black")
 
     useEffect(() => {
         async function fetchData() {
@@ -17,7 +18,12 @@ export default function UserList () {
     })
 
     const Choose = (event) => {
-        console.log(event.target.value);
+        console.log(event.target)
+        /*if(event.target.value === "active") {
+            setCol("blue")
+        } else {
+            setCol("black")
+        }*/
     }
 
     const Distrib = (letter) => {// eslint-disable-next-line
@@ -32,8 +38,8 @@ export default function UserList () {
         if(NeedUsers.length === 0){
             return <div>{"---"}</div>
         } else {
-            return (NeedUsers.map(name => <div key={NeedUsers.indexOf(name)} className="person">{name}
-            <div onChange={Choose} className="personInp"><input type="radio" value="not active" name={name} defaultChecked={true} /> not active<input type="radio" value="active" name={name} /> active</div></div>))
+            return (NeedUsers.map(name => <div key={NeedUsers.indexOf(name)} className="person" style={{color:col}}>{name}
+            <div onChange={Choose} className="personInp"><input type="radio" value="not active" name={name} defaultChecked={true} /> not active<input type="radio" value="active" name={name} defaultChecked={false} /> active</div></div>))
         }
     }
 
