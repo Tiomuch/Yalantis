@@ -16,6 +16,10 @@ export default function UserList () {
         fetchData()
     })
 
+    const Choose = (event) => {
+        console.log(event.target.value);
+    }
+
     const Distrib = (letter) => {// eslint-disable-next-line
         let NeedUsers = []
 
@@ -28,13 +32,17 @@ export default function UserList () {
         if(NeedUsers.length === 0){
             return <div>{"---"}</div>
         } else {
-            return (NeedUsers.map(name => <div key={NeedUsers.indexOf(name)}>{name}</div>))
+            return (NeedUsers.map(name => <div key={NeedUsers.indexOf(name)} className="person">{name}
+            <div onChange={Choose} className="personInp"><input type="radio" value="not active" name={name} defaultChecked={true} /> not active<input type="radio" value="active" name={name} /> active</div></div>))
         }
     }
 
     return (
-        <ul>
+      <>
+      <div className="emp"><b>Employees</b></div>
+        <ul className="alphUl">
             { EN.map(letter => <li key={EN.indexOf(letter)} className="alphLi">{letter} { Distrib(letter) }</li>) }
         </ul>
+          </>
     )
 }

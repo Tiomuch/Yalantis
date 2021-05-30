@@ -16,3 +16,22 @@ code {
   display: inline-block;
   width: 60px;
 }
+
+.alphUl {
+  display: flex;
+  align-items: flex-start;
+}
+
+.person {
+  font-size: 10px;
+}
+
+.emp {
+  margin-left: 730px;
+}
+
+.personInp {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+}
